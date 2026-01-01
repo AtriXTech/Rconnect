@@ -1,0 +1,83 @@
+
+<div class="flex flex-col gap-6">
+    <!-- ================= RECEIVED MESSAGE ================= -->
+    <div class="flex flex-col items-start gap-1 max-w-[85%]">
+        <div class="flex items-end gap-2">
+
+            <!-- Avatar -->
+            <div class="h-8 w-8 rounded-full bg-gray-300 overflow-hidden flex-shrink-0 mb-1">
+                <img src="https://i.pravatar.cc/40" alt="User avatar" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Bubble -->
+            <div class="bg-white dark:bg-card-dark p-3.5 rounded-2xl rounded-bl-none shadow-sm border border-gray-100 dark:border-gray-800">
+                <p class="text-[15px] text-gray-800 dark:text-gray-200">
+                    Hey! Is the room still available?
+                </p>
+            </div>
+        </div>
+
+        <span class="text-[10px] text-gray-400 pl-11">10:42 AM</span>
+    </div>
+
+    <!-- ================= SENT MESSAGE ================= -->
+    <div class="self-end flex flex-col items-end gap-1 max-w-[85%]">
+
+        <!-- Bubble -->
+        <div class="bg-primary/10 dark:bg-primary/20 p-3.5 rounded-2xl rounded-br-none border border-primary/20 shadow-sm">
+            <p class="text-[15px] text-gray-900 dark:text-gray-50">
+                Hi Sarah! Yes, it’s still available 😊
+            </p>
+        </div>
+
+        <!-- Time + Read -->
+        <div class="flex items-center gap-1 pr-1">
+            <span class="text-[10px] text-gray-400">10:45 AM</span>
+            <span class="material-symbols-outlined text-[14px] text-primary">done_all</span>
+        </div>
+    </div>
+
+</div>
+...............
+agent lay
+<article class="group bg-card-light dark:bg-card-dark rounded-xl shadow-sm dark:shadow-none overflow-hidden border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all duration-300">
+<div class="relative h-52 w-full overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Professional woman in business attire looking at camera" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCATG04LFtIwT2sS0L2oeYlSf6O8dZByZK_o-G8DhoahabNVWAegTFaaYfZICkFdFpc3YuPNhK4RD6EcmAoHptx__LX1XslND0WKVYfo5xg5xMJW6N9fKd8emsUQyr-0tT-SzdWRXBwVsIPkGXl1VB0R8pzwO28LKz2E3on1nD5RPx59TxtrOZqD9WTga2wsvfwGNaGrcldQhHhqHSSrgzi_ipbE4bp6k8E7Yc5IgpUl1IE81egrOjkC5IUFywe4gNRQEYmhPxDiT2n');"></div>
+<div class="absolute top-3 left-3 flex gap-2">
+<span class="bg-primary/95 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-slate-900 shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] filled">verified</span>
+                    Verified Agent
+                </span>
+</div>
+<div class="absolute bottom-3 right-3">
+<span class="bg-white/90 dark:bg-black/60 backdrop-blur px-2.5 py-1 rounded-lg text-xs font-bold text-slate-800 dark:text-white shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">apartment</span>
+                    5 Listings
+                </span>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Sarah Jenkins</h2>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 mt-1">Real Estate Pro • 5 yrs exp.</p>
+</div>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Specializing in student housing near the University District. I have several studios and 2-bedroom units available.
+            </p>
+<div class="pt-1 flex  items-center justify-between md:justify-evenly gap-3">
+   
+<a href="{{route('agentProfile')}}">
+    <button class="md:px-20 px-8 h-11   bg-transparent border-2 border-primary hover:bg-primary/10 text-primary font-bold rounded-lg text-sm transition-colors">
+                    View Profile
+                </button>
+</a>
+               
+ <form  method="POST" action="{{ route('startChat',auth()->user()->id) }}">
+    @csrf
+<input value='Message' type='submit' class="md:px-20 px-8  h-11 bg-primary hover:bg-primary-hover active:scale-[0.98] text-slate-900 font-bold rounded-lg text-sm transition-all shadow-sm shadow-primary/20" />
+            </form>
+</div>
+</div>
+</article>
