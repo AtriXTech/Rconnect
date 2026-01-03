@@ -15,21 +15,15 @@ class RoomateConnect extends Controller
     public function agentOnboardingSuccess(){
         return view('agent.agentOnboardingSuccess');
     }
-    public function agentProfile(){
-        return view('agent.agentProfile');
-    }
+   
     public function agentDashboard(){
         return view('agent.agentDashboard');
     }
+   
     public function agentLeads(){
         return view('agent.leads');
     }
- public function studentProfile(User $user)
-{
-    $user->load(['roommate_profile', 'preference']);
 
-    return view('student.studentProfile', compact('user'));
-}
     public function discover(){
         return view('student.discover');
     }

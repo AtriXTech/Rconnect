@@ -1,9 +1,9 @@
 <x-generalLayout>
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
 <x-agentNavLayout />
-<main class="flex-1 px-4 pt-[130px] pb-6">
+<main class="flex-1 px-4 pt-[130px] pb-6 md:mx-40">
 <div class="mb-6">
-<p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Good Morning, Sarah!</p>
+<p class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Welcome <b class='capitalize text-md'>{{auth()->user()->name}}</b></p>
 <h2 class="text-slate-900 dark:text-white tracking-tight text-[28px] font-bold leading-tight">Dashboard</h2>
 </div>
 <div class="grid grid-cols-2 gap-4 mb-8">

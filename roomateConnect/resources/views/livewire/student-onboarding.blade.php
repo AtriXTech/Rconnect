@@ -81,6 +81,7 @@
 </div>
  @error('tel')<span class="text-red-500">{{ $message }}</span> @enderror
 </div>
+
 <div class="flex flex-col gap-2 pt-1">
 <label class="text-sm font-semibold text-gray-700 dark:text-gray-300">Gender <span class="text-gray-400 font-normal">(Optional)</span></label>
 <div class="grid grid-cols-3 gap-3">
