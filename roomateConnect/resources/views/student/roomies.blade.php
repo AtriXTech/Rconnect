@@ -91,6 +91,64 @@
 <span class="leading-tight font-bold text-gray-900 dark:text-white">₦{{$student->min_budget}} - ₦{{$student->max_budget}} <span class="text-xs font-normal text-gray-400">/ yr</span></span>
 </div>
 </div>
+@php
+    $about = [];
+
+    // Boolean-based statements
+    $about[] = $student->shareUtilities == 1
+        ? "I’m open to sharing my utilities and Cooking utensils  "
+        : "I prefer not to share my utilities & Cooking utensils ";
+
+    $about[] = $student->cookTogether == 1
+        ? "I enjoy cooking together"
+        : "I prefer cooking separately";
+
+    $about[] = $student->Has_Pets == 1
+        ? "I’m comfortable living with pets"
+        : "I prefer a pet-free space";
+
+    // Sleep schedule
+    $sleepMap = [
+        'Early Bird' => "I’m an early riser",
+        'Night Owl' => "I’m more active at night",
+        'Flexible'  => "I have a flexible sleep schedule",
+    ];
+    $about[] = $sleepMap[$student->mySleepSchedule] ?? null;
+
+    // Cleanliness
+    $cleanMap = [
+        'Relaxed' => "I’m relaxed about cleanliness",
+        'Average' => "I keep things reasonably tidy",
+        'Very Clean' => "I like my space very clean",
+    ];
+    $about[] = $cleanMap[$student->cleanliness_level] ?? null;
+
+    // Social personality
+    $socialMap = [
+        'Introvert' => "I’m more of an introvert",
+        'Ambivert' => "I’m an ambivert that is i'm not a introvert nor an extrovert lol ",
+        'Extrovert' => "I’m very outgoing",
+    ];
+    $about[] = $socialMap[$student->social] ?? null;
+
+    // Overnight guests
+    $guestMap = [
+        'Never' => "I don’t host overnight guests",
+        'Weekends' => "I prefer to  host guests occasionally on weekends",
+        'Anytime' => "I’m okay with overnight guests anytime",
+    ];
+    $about[] = $guestMap[$student->overnight_guest] ?? null;
+
+    // Gender (optional add)
+    $about[] = "I’m a {$student->gender}";
+
+    $about[]="I'm thinking of moving into my new space on {$student->move_in_date->format('F j,Y')}"
+@endphp
+
+<p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+    {{ implode('. ', array_filter($about)) }}.
+</p>
+
 <!-- Lifestyle Chips -->
 <div class="flex flex-wrap gap-2">
 @foreach ($student->my_vibes as $my_vibe)
