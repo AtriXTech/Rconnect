@@ -13,8 +13,9 @@ class ProfileController extends Controller
 
     return view('student.studentProfile', compact('user'));
 }
- public function agentProfile(){
-        return view('agent.agentProfile');
+ public function agentProfile(User $agent){
+    $agent->load(['agent_profile']);
+        return view('agent.agentProfile',compact('agent_profile'));
     }
 
 

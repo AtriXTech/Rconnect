@@ -106,7 +106,7 @@
     <label class="flex flex-col min-w-40 flex-1">
 <p class="text-text-body dark:text-gray-200 text-base font-medium leading-normal pb-2">Room Type Name</p>
 <div class="relative">
-<input wire:morel='room_type' class="form-input pl-7 flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-body dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary h-14 placeholder:text-text-helper dark:placeholder-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="e.g., Single Room with Balcony" type="text" />
+<input wire:model='room_type' class="form-input pl-7 flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-body dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary h-14 placeholder:text-text-helper dark:placeholder-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="e.g., Single Room with Balcony" type="text" />
 </div>
 </label>
 <p class="text-text-helper text-primary text-xs pt-2">Whats the name of your type of hostel</p>
@@ -141,7 +141,7 @@
 <p class="text-text-body dark:text-gray-200 text-base font-medium leading-normal pb-2">Hostel Price</p>
 <div class="relative">
 <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-text-helper dark:text-gray-400">$</span>
-<input wire_model='hostel_price' class="form-input pl-7 flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-body dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary h-14 placeholder:text-text-helper dark:placeholder-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="250" type="number" />
+<input wire:model.defer="hostel_price" class="form-input pl-7 flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-body dark:text-white focus:outline-0 focus:ring-0 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:border-primary h-14 placeholder:text-text-helper dark:placeholder-gray-400 p-[15px] text-base font-normal leading-normal" placeholder="250" type="number" />
 </div>
 <p class="text-text-helper text-primary text-xs pt-2">Whats the total charges required to be paid before moving in</p>
      @error('hostel_price')<span class="text-red-500">{{ $message }}</span> @enderror
@@ -409,10 +409,10 @@
     <button wire:click='decrementStep' class="w-full h-14 rounded-xl bg-primary text-[#112121] text-lg font-bold flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">Previous</button>
     @endif
     @if($currentStep<$totalStep)
-    <button wire:click='saveStep' class="w-full h-14 rounded-xl bg-primary text-[#112121] text-lg font-bold flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">Continue</button>
+    <button type="button" wire:click="saveStep" class="w-full h-14 rounded-xl bg-primary text-[#112121] text-lg font-bold flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">Continue</button>
     @endif
     @if($currentStep==$totalStep)
-    <button wire:click='saveStep' class="w-full h-14 rounded-xl bg-primary text-[#112121] text-lg font-bold flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">Submit & List Hostel</button>
+    <button type="button" wire:click="saveStep" class="w-full h-14 rounded-xl bg-primary text-[#112121] text-lg font-bold flex items-center justify-center hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark">Submit & List Hostel</button>
     @endif
 </div>
         </footer>

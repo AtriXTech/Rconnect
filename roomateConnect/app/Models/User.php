@@ -77,4 +77,8 @@ public function listings()
 {
     return $this->hasMany(Listing::class);
 }
+public function agent_profile()
+    {
+        return $this->hasOne(Agency::class);
+    }
 }

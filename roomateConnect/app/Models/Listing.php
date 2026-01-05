@@ -20,6 +20,7 @@ class Listing extends Model
         'hostel_amenities',
         'more_hostel_amenities',
         'hostel_rules',
+        'status',
         'media',
     ];
     protected $casts = [

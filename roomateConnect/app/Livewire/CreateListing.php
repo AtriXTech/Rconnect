@@ -43,7 +43,8 @@ class CreateListing extends Component
 
             // Create listing if not exists
             $listing = Listing::firstOrCreate(
-                ['user_id' =>Auth::id()],
+                ['user_id' => Auth::id()],
+                 ['status' => 'draft'],
                 [
                     'hostel_name' => $this->hostel_name,
                     'hostel_address' => $this->hostel_address,
@@ -76,37 +77,39 @@ class CreateListing extends Component
             ]);
         }
 
-        // STEP 3
         elseif ($this->currentStep == 3) {
-            $this->validate([
-                'hostel_amenities' => 'required|array|min:1',
-                'hostel_rules' => 'nullable|string|min:10',
-                'media' => 'required|array|min:3',
-                'media.*' => 'file|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:20480',
-            ]);
 
-            $listing = Listing::findOrFail($this->listingId);
-            $mediaPaths = $listing->media ?? [];
+    $this->validate([
+        'hostel_amenities' => 'required|array|min:1',
+        'hostel_rules'     => 'nullable|string|min:10',
+        'media'            => 'required|array|min:3',
+        'media.*'          => 'file|mimes:jpg,jpeg,png,webp,mp4,mov,avi|max:20480',
+    ]);
 
-            foreach ($this->media as $file) {
-                $path = $file->store('hostels', 'public');
-                $mediaPaths[] = $path;
+    $mediaPaths = [];
 
-                // Optional: store separately if you have a media relationship
-                $listing->media()->create([
-                    'path' => $path,
-                    'type' => str_starts_with($file->getMimeType(), 'image') ? 'image' : 'video',
-                ]);
-            }
+    foreach ($this->media as $file) {
+        $path = $file->store('hostels', 'public');
 
-            $listing->update([
-                'amenities' => array_merge($this->hostel_amenities, array_filter([$this->more_hostel_amenities])),
-                'rules' => $this->hostel_rules,
-                'media' => $mediaPaths,
-            ]);
-        }
+        $mediaPaths[] = [
+            'path' => $path,
+            'type' => str_starts_with($file->getMimeType(), 'image') ? 'image' : 'video',
+        ];
+    }
+
+         $listing = Listing::findOrFail($this->listingId);
+        $listing->update([
+        'hostel_amenities' => array_merge(
+            $this->hostel_amenities,
+            array_filter([$this->more_hostel_amenities])
+        ),
+        'hostel_rules' => $this->hostel_rules,
+        'media'        => $mediaPaths, // JSON
+    ]);
+}
 
         $this->currentStep++;
+       
     }
 
     public function removeMedia($index)
@@ -115,10 +118,6 @@ class CreateListing extends Component
         $this->media = array_values($this->media);
     }
 
-    public function incrementStep()
-    {
-        $this->currentStep++;
-    }
 
     public function decrementStep()
     {
