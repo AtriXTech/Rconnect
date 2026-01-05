@@ -76,9 +76,11 @@
 <div class="relative z-10 flex flex-col gap-2 text-white">
 <h3 class="text-lg font-bold">Post a New Listing</h3>
 <p class="text-white/90 text-sm max-w-[200px]">Reach thousands of students looking for their perfect roommate.</p>
-<button class="mt-2 w-fit rounded-lg bg-white px-4 py-2 text-sm font-bold text-primary shadow-sm hover:bg-gray-50 transition-colors">
+<a href="{{route('createListing')}}">
+    <button class="mt-2 w-fit rounded-lg bg-white px-4 py-2 text-sm font-bold text-primary shadow-sm hover:bg-gray-50 transition-colors">
                     Create Listing
                 </button>
+</a>
 </div>
 <div class="absolute -right-6 -bottom-6 text-white/20">
 <span class="material-symbols-outlined text-[140px]">home_work</span>

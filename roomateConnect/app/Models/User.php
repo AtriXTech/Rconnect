@@ -73,4 +73,8 @@ class User extends Authenticatable
    public function preference(){
      return $this->hasOne(roommate_preference::class);
    }
+public function listings()
+{
+    return $this->hasMany(Listing::class);
+}
 }
