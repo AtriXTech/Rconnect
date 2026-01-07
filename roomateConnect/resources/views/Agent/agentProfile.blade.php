@@ -25,19 +25,29 @@
   </div>
 </nav>
 
+@foreach($agency as $agent)
 <main class="md:mx-40 flex flex-col gap-6 p-4">
 <section class="flex flex-col items-center gap-4 py-4">
 <div class="relative group">
-<div class="bg-center bg-no-repeat bg-cover rounded-full h-32 w-32 shadow-sm border-4 border-surface-light dark:border-surface-dark ring-2 ring-primary/30" data-alt="Agency Logo with abstract building shapes" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-57oDXz0gW_DWwc9eLbz1APd8sMYYnQdBuAtQblERQ4bLbs5FBSK69cNvqFU0AvNu1rHsEvyde20j0VZlMoTZPsdotptEiF_FCWFGlKu7_pydWehK_DnQiWv7Efmj73chCKU_Sn3xKJ5-mNqDlEBjXYiHCMLnK4kStuv-8U18LxUxZzOtOELoKFVJ1Iukv7EuxU14kcBzrDnxzxSjheTYt8HjwB-7TZPiBf0HvpLq7IKz8BYOqvLm20zaGavDXmogKCoNfc461BwJ");'>
+<div
+    class="bg-center bg-no-repeat bg-cover rounded-full h-32 w-32 shadow-sm border-4 border-surface-light dark:border-surface-dark ring-2 ring-primary/30"
+    style="background-image: url('{{ $agent->photo ? asset('storage/' . $agent->photo) : asset('images/default-avatar.png') }}')"
+>
 </div>
+
 <button class="absolute bottom-0 right-0 bg-primary text-primary-content p-2 rounded-full shadow-lg hover:bg-primary/90 transition flex items-center justify-center border-2 border-surface-light dark:border-surface-dark">
 <span class="material-symbols-outlined" style="font-size: 20px;">photo_camera</span>
 </button>
 </div>
 <div class="flex flex-col items-center text-center px-4">
-<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] mb-1">Urban Living Realty</h2>
+<h2 class="text-2xl font-bold leading-tight tracking-[-0.015em] mb-1 uppercase">{{$agent->full_name}}</h2>
 <p class="text-text-muted text-sm font-medium leading-relaxed max-w-xs">
-                Connecting students with safe, affordable housing since 2010.
+               <p class="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+    {{ $agent->full_name }} is a trusted housing agent specializing in premium hostel and off-campus housing solutions.
+    Active across {{ implode(', ', $agent->locations ?? []) }}, serving clients with budgets from ₦{{ number_format($agent->min_budget) }} to ₦{{ number_format($agent->max_budget) }}.
+    Professional service with a {{ $agent->commission_value }}% commission and a strong focus on client satisfaction.
+</p>
+
             </p>
 </div>
 </section>
@@ -58,7 +68,7 @@
 </div>
 <div class="flex-1 min-w-0">
 <p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-0.5">Phone</p>
-<p class="text-sm font-semibold text-text-main dark:text-white truncate">(555) 123-4567</p>
+<p class="text-sm font-semibold text-text-main dark:text-white truncate">(+234){{$agent->phone_number}}</p>
 </div>
 </div>
 <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
@@ -67,7 +77,7 @@
 </div>
 <div class="flex-1 min-w-0">
 <p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-0.5">Email</p>
-<p class="text-sm font-semibold text-text-main dark:text-white truncate">contact@urbanliving.com</p>
+<p class="text-sm font-semibold text-text-main dark:text-white truncate">{{$agent->email}}</p>
 </div>
 </div>
 <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
@@ -84,8 +94,13 @@
 <span class="material-symbols-outlined text-primary" style="font-size: 20px;">location_on</span>
 </div>
 <div class="flex-1 min-w-0">
-<p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-0.5">Office</p>
-<p class="text-sm font-semibold text-text-main dark:text-white truncate">123 Main St, New York, NY</p>
+<p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-0.5">Operating Areas</p>
+
+@foreach ($agent->locations ?? [] as $item)
+    <p class="text-sm font-semibold text-text-main dark:text-white truncate">
+        {{ $item }}
+    </p>
+@endforeach
 </div>
 </div>
 <div class="flex items-center gap-4 p-4 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
@@ -113,15 +128,11 @@
 <div>
 <p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-3">Housing Types</p>
 <div class="flex flex-wrap gap-2">
-<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary-dark dark:text-primary">
-                        Apartments
+@foreach ($agent->services as $item)
+    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary-dark dark:text-primary">
+                        {{$item}}
                     </span>
-<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary-dark dark:text-primary">
-                        Shared Houses
-                    </span>
-<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary-dark dark:text-primary">
-                        Dorms
-                    </span>
+@endforeach
 </div>
 </div>
 <div class="h-px bg-border-light dark:bg-border-dark w-full"></div>
@@ -130,15 +141,15 @@
 <div class="flex flex-col gap-2">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
-<span class="text-sm text-text-main dark:text-white">No Broker Fee for Students</span>
+<span class="text-sm text-text-main dark:text-white">Commission Type => {{$agent->commission_type}}</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
-<span class="text-sm text-text-main dark:text-white">Pet Friendly Options</span>
+<span class="text-sm text-text-main dark:text-white">Commission Amount => %{{$agent->commission_value}} </span>
 </div>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
-<span class="text-sm text-text-main dark:text-white">Virtual Tours Available</span>
+<span class="text-sm text-text-main dark:text-white">Minimum budget of hostel i lease out is => {{$agent->min_budget}}</span>
 </div>
 </div>
 </div>
@@ -167,7 +178,7 @@
 <div>
 <p class="text-xs font-medium text-text-muted uppercase tracking-wider mb-1">License Number</p>
 <p class="text-sm font-bold font-mono text-primary bg-background-light dark:bg-background-dark p-2 rounded border border-border-light dark:border-border-dark inline-block">
-                            #RE-NY-884210
+                           #{{$agent->agent_reference}}
                         </p>
 </div>
 </div>
@@ -185,4 +196,5 @@
 </section>
 
 </main>
+@endforeach
 </x-generalLayout>

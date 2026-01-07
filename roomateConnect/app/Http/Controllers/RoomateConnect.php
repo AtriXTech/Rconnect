@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Listing;
 use App\Models\roommate_profile;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class RoomateConnect extends Controller
     }
    
     public function agentDashboard(){
-        return view('agent.agentDashboard');
+        $listings=Listing::latest()->get();
+        return view('agent.agentDashboard',compact('listings'));
     }
    
     public function agentLeads(){
@@ -25,13 +27,22 @@ class RoomateConnect extends Controller
     }
 
     public function discover(){
-        return view('student.discover');
+        $hostels = Listing::inRandomOrder()->take(5)->get();
+        $roommates = roommate_profile::inRandomOrder()->take(2)->get();
+        $feedItems = $hostels->merge($roommates)->shuffle();
+        return view('student.discover',compact('feedItems'));
     }
     public function hostels(){
-        return view('student.hostel');
+        $listings=Listing::latest()->get();
+        return view('student.hostel',compact('listings'));
     }
     public function roomies(){
-        $students=roommate_profile::all();
+        $students=roommate_profile::latest()->get();
         return view('student.roomies',compact('students'));
     }
+
+    public function listingDetails(Listing $listing)
+{
+    return view('agent.listingDetails', compact('listing'));
+}
 }

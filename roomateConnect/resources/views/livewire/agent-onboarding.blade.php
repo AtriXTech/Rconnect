@@ -429,7 +429,7 @@
 
     <!-- Card 2 -->
     <label class="relative group cursor-pointer">
-      <input type="checkbox" wire:model="services" value="hostel_listings"
+      <input type="checkbox" wire:model="services" value="hostel listings"
              class="peer absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
       <div class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5">
         <div class="flex items-center gap-4">
@@ -446,7 +446,7 @@
 
     <!-- Card 3 -->
     <label class="relative group cursor-pointer">
-      <input type="checkbox" wire:model="services" value="off_campus_housing"
+      <input type="checkbox" wire:model="services" value="off campus housing"
              class="peer absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
       <div class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5">
         <div class="flex items-center gap-4">
@@ -463,7 +463,7 @@
 
     <!-- Card 4 -->
     <label class="relative group cursor-pointer">
-      <input type="checkbox" wire:model="services" value="short_term_rent"
+      <input type="checkbox" wire:model="services" value="short term rent"
              class="peer absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
       <div class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5">
         <div class="flex items-center gap-4">
@@ -480,7 +480,7 @@
 
     <!-- Card 5 -->
     <label class="relative group cursor-pointer">
-      <input type="checkbox" wire:model="services" value="inspection_assistance"
+      <input type="checkbox" wire:model="services" value="inspection assistance"
              class="peer absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" />
       <div class="flex items-center justify-between p-4 rounded-xl border-2 border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm transition-all duration-200 hover:border-primary/50 peer-checked:border-primary peer-checked:bg-primary/5">
         <div class="flex items-center gap-4">

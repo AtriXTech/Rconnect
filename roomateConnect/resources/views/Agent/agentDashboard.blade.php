@@ -86,6 +86,28 @@
 <span class="material-symbols-outlined text-[140px]">home_work</span>
 </div>
 </div>
+@foreach ($listings as $listing)
+  <div class="rounded-xl bg-card-light dark:bg-card-dark p-4 shadow-sm">
+<div class="flex items-start gap-4">
+    {{-- {{dd($listing->media[0])}} --}}
+    @foreach (collect($listing->media)->take(1) as $item)
+        <img alt="Hostel common area view" class="h-20 w-20 rounded-lg object-cover"   src="{{ asset('storage/' . $item['path']) }}"/>
+    @endforeach
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-bold">{{$listing->hostel_name}}</h4>
+<span class="inline-flex items-center rounded-full bg-red-100 dark:bg-red-900 px-2.5 py-0.5 text-xs font-medium text-red-800 dark:text-red-200">Inactive</span>
+</div>
+<p class="text-sm text-gray-500 dark:text-gray-400">{{$listing->hostel_address}}</p>
+<p class="text-sm text-gray-500 dark:text-gray-400">₦{{$listing->hostel_price}}</p>
+<div class="mt-2 flex items-center gap-2">
+<button class="flex-1 rounded-md bg-primary/20 dark:bg-primary/30 py-1.5 text-xs font-semibold text-text-light dark:text-text-dark">Edit</button>
+<button class="flex-1 rounded-md bg-gray-200 dark:bg-gray-700 py-1.5 text-xs font-semibold">View</button>
+</div>
+</div>
+</div>
+</div>  
+@endforeach
 </main>
 <div class="h-5"></div>
 </div>

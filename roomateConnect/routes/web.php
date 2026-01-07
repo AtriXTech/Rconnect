@@ -13,11 +13,13 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 
 
-
-Route::post('/register',[AuthController::class,'registerProcess'])->name('register.process');
-Route::post('/login',[AuthController::class,'loginProcess'])->name('login.process');
-Route::get('/register',[AuthController::class,'register'])->name('register');
 Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::post('/login',[AuthController::class,'loginProcess'])->name('login.process');
+Route::post('/register',[AuthController::class,'registerProcess'])->name('register.process');
+Route::get('/register',[AuthController::class,'register'])->name('register');
+
+Route::middleware(['auth'])->group(function(){
+Route::get('/listingDetails/{listing}',[RoomateConnect::class,'listingDetails'])->name('listingDetails');
 Route::get('/studentOnboarding',StudentOnboarding::class)->name('student.onboarding');
 Route::get('/agent_onboarding', AgentOnboarding::class)->name('agent.onboarding');
 Route::get('/studentOnboardingSuccess',[RoomateConnect::class,'studentOnboardingSuccess'])->name('studentOnboardingSuccess');
@@ -33,5 +35,4 @@ Route::post('start_chat/{user}',[ChatController::class,'startChat'])->name('star
 Route::get('/agentDashboard',[RoomateConnect::class,'agentDashboard'])->name('agentDashboard');
 Route::get('/agentLeads',[RoomateConnect::class,'agentLeads'])->name('agentLeads');
 Route::get('/createListing',CreateListing::class)->name('createListing');
-// Living Habits
- 
+ });

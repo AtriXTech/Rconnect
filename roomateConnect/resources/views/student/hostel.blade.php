@@ -53,13 +53,15 @@
 <h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark">All Listings</h3>
 <button class="text-sm font-medium text-primary hover:text-primary-dark">Sort By</button>
 </div>
+
+@foreach ($listings as $listing)
 <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-none dark:border dark:border-gray-800 transition-transform active:scale-[0.99]">
 <div class="relative h-48 w-full overflow-hidden bg-gray-200">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern student hostel building exterior with balconies" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA39qdMafUiNVMdDXjUgarDE2KAQUVB8mQZLJ-Qej5bYuZp0zUIC8r4vZzjzAmK2-NAXHDiJJJGE7-opxSqCEePJI7fvQdanIN4DeoNQp-Vq0VMiqDMx-nSj4IQGCRRRPS6d4dM_Z4d6vmWzw3UbgPfNNfS1S4-Yv2jGkHUrYJjgYQtWTn1BEegBdwLcv_I6PV66vHZ7-8sJMCyqwuQogb4O1cx42gt0DdpYmbFJ1WSgMIMD0__Y5W6ENBQyP_VR6-7b-PYNfqegCkf");'>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Modern student hostel building exterior with balconies" style="background-image: url('{{ $listing->media ? asset('storage/' . $listing->media[0]['path']) : asset('images/default-avatar.png') }}')">
 </div>
 <div class="absolute top-3 left-3 flex gap-2">
 <span class="rounded-md bg-white/90 dark:bg-black/60 backdrop-blur-sm px-2 py-1 text-xs font-bold text-text-main-light dark:text-white shadow-sm">
-                        Single Room
+                        {{$listing->room_type}}
                     </span>
 <span class="rounded-md bg-green-500/90 backdrop-blur-sm px-2 py-1 text-xs font-bold text-white shadow-sm">
                         Available
@@ -72,81 +74,32 @@
 <div class="flex flex-col p-4 gap-3">
 <div class="flex justify-between items-start">
 <div>
-<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">Sunrise Student Lodge</h3>
+<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">{{$listing->hostel_name}}</h3>
 <div class="flex items-center gap-1 mt-1 text-text-sub-light dark:text-text-sub-dark">
 <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
-<span class="text-sm font-medium">Yaba, Lagos</span>
+<span class="text-sm font-medium">{{$listing->hostel_address}}</span>
 </div>
 </div>
 <div class="text-right">
-<p class="text-lg font-bold text-primary">₦150k</p>
+<p class="text-lg font-bold text-primary">₦{{$listing->hostel_price}}k</p>
 <p class="text-xs text-text-sub-light dark:text-text-sub-dark">/ year</p>
 </div>
 </div>
 <div class="flex items-center gap-4 py-1 border-t border-b border-gray-100 dark:border-gray-800">
-<div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark" title="Wifi">
-<span class="material-symbols-outlined text-[18px]">wifi</span>
-<span class="text-xs">Wifi</span>
+    @foreach($listing->hostel_amenities ?? [] as $item)
+        <div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark" title="{{ $item }}">
+            <span class="text-xs">{{ $item }}</span>
+        </div>
+    @endforeach
 </div>
-<div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark" title="Power">
-<span class="material-symbols-outlined text-[18px]">bolt</span>
-<span class="text-xs">24h Power</span>
-</div>
-<div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark" title="Security">
-<span class="material-symbols-outlined text-[18px]">security</span>
-<span class="text-xs">Security</span>
-</div>
-</div>
+
 <button class="mt-1 flex w-full items-center justify-center rounded-lg bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 text-sm transition-colors shadow-sm shadow-primary/30">
                     View Details
                 </button>
 </div>
 </div>
-<div class="group relative flex flex-col overflow-hidden rounded-2xl bg-surface-light dark:bg-surface-dark shadow-[0_2px_8px_rgba(0,0,0,0.08)] dark:shadow-none dark:border dark:border-gray-800 transition-transform active:scale-[0.99]">
-<div class="relative h-48 w-full overflow-hidden bg-gray-200">
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Cozy student apartment interior with desk and bed" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDqgjHxorU7_Igk5Ah6_xsskYW0aTUPRTC_Vg-wZaksIvJe2SDKgyOEysr12bkqgNRektdi3CSSjqtFlbUPPYQns41hfStnpzvHhqu6mY9JNZJ1iq-87NuL-YMjWC0w60STU54tVq1pqNAX1RzMfmhRMENyQRVqwiVgVdCGJ37ryiF7ndUzMEWM3ZXUpP-GbJxwPQvjsttydwM9T4f9gHC6pt4l74IKv8aYAzSP5Y24rjCzzBYhO3EiSZOeEFucPd8SM2B637jjXdNY");'>
-</div>
-<div class="absolute top-3 left-3 flex gap-2">
-<span class="rounded-md bg-white/90 dark:bg-black/60 backdrop-blur-sm px-2 py-1 text-xs font-bold text-text-main-light dark:text-white shadow-sm">
-                        Shared (2)
-                    </span>
-<span class="rounded-md bg-orange-400/90 backdrop-blur-sm px-2 py-1 text-xs font-bold text-white shadow-sm">
-                        Limited
-                    </span>
-</div>
-<button class="absolute top-3 right-3 flex size-8 items-center justify-center rounded-full bg-white/90 dark:bg-black/50 backdrop-blur-sm text-primary transition-colors shadow-sm">
-<span class="material-symbols-outlined text-[20px] font-variation-settings-fill">favorite</span>
-</button>
-</div>
-<div class="flex flex-col p-4 gap-3">
-<div class="flex justify-between items-start">
-<div>
-<h3 class="text-lg font-bold text-text-main-light dark:text-text-main-dark leading-tight">Emerald Heights</h3>
-<div class="flex items-center gap-1 mt-1 text-text-sub-light dark:text-text-sub-dark">
-<span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
-<span class="text-sm font-medium">Akoka, Lagos</span>
-</div>
-</div>
-<div class="text-right">
-<p class="text-lg font-bold text-primary">₦90k</p>
-<p class="text-xs text-text-sub-light dark:text-text-sub-dark">/ year</p>
-</div>
-</div>
-<div class="flex items-center gap-4 py-1 border-t border-b border-gray-100 dark:border-gray-800">
-<div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark">
-<span class="material-symbols-outlined text-[18px]">water_drop</span>
-<span class="text-xs">Water</span>
-</div>
-<div class="flex items-center gap-1.5 text-text-sub-light dark:text-text-sub-dark">
-<span class="material-symbols-outlined text-[18px]">kitchen</span>
-<span class="text-xs">Kitchen</span>
-</div>
-</div>
-<button class="mt-1 flex w-full items-center justify-center rounded-lg bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 text-sm transition-colors shadow-sm shadow-primary/30">
-                    View Details
-                </button>
-</div>
-</div>
+@endforeach
+
 <div class="flex flex-col gap-3 p-4 rounded-2xl bg-surface-light dark:bg-surface-dark border border-gray-100 dark:border-gray-800">
 <div class="h-48 w-full bg-gray-100 dark:bg-gray-800 animate-pulse rounded-lg"></div>
 <div class="flex justify-between mt-2">

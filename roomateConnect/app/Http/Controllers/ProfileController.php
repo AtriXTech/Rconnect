@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agency;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,13 @@ class ProfileController extends Controller
 
     return view('student.studentProfile', compact('user'));
 }
- public function agentProfile(User $agent){
-    $agent->load(['agent_profile']);
-        return view('agent.agentProfile',compact('agent_profile'));
+//  public function agentProfile(User $agent){
+//     $agent->load(['agent_profile']);
+//         return view('agent.agentProfile',compact('agent'));
+//     }
+ public function agentProfile(){
+    $agency=Agency::all();
+        return view('agent.agentProfile',compact('agency'));
     }
 
 

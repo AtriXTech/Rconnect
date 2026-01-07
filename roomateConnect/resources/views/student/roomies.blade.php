@@ -52,7 +52,7 @@
 <main class="flex-1 flex flex-col gap-4 p-4 pb-24 overflow-y-auto no-scrollbar">
 <!-- Card 1: Featured/Detailed -->
 @foreach ($students as $student)
-    {{-- {{ dd($student) }} --}}
+    {{-- {{ dd($students) }} --}}
 
 <article class="flex flex-col bg-surface-light dark:bg-surface-dark rounded-2xl shadow-soft overflow-hidden group/card relative transition-transform hover:scale-[1.01] duration-300 border border-transparent dark:border-gray-800">
 <!-- Save Button Absolute -->

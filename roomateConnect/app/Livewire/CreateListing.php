@@ -33,27 +33,25 @@ class CreateListing extends Component
 
     public function saveStep()
     {
-        // STEP 1
         if ($this->currentStep == 1) {
-            $this->validate([
-                'hostel_name' => 'required|string|min:5',
-                'hostel_address' => 'required|string|min:10',
-                'tel' => ['required', 'string', 'regex:/^\+?\d{10,15}$/', 'min:10'],
-            ]);
 
-            // Create listing if not exists
-            $listing = Listing::firstOrCreate(
-                ['user_id' => Auth::id()],
-                 ['status' => 'draft'],
-                [
-                    'hostel_name' => $this->hostel_name,
-                    'hostel_address' => $this->hostel_address,
-                    'tel' => $this->tel,
-                ]
-            );
+    $this->validate([
+        'hostel_name' => 'required|string|min:5',
+        'hostel_address' => 'required|string|min:10',
+        'tel' => 'required|string|min:10',
+    ]);
 
-            $this->listingId = $listing->id;
-        }
+    $listing = Listing::create([
+        'user_id' => Auth::id(),
+        'hostel_name' => $this->hostel_name,
+        'hostel_address' => $this->hostel_address,
+        'tel' => $this->tel,
+        'status' => 'draft',
+    ]);
+
+    $this->listingId = $listing->id;
+}
+
 
         // STEP 2
         elseif ($this->currentStep == 2) {
@@ -106,6 +104,8 @@ class CreateListing extends Component
         'hostel_rules' => $this->hostel_rules,
         'media'        => $mediaPaths, // JSON
     ]);
+
+    return redirect()->route('agentDashboard');
 }
 
         $this->currentStep++;
