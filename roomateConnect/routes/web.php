@@ -8,6 +8,7 @@ use App\Livewire\AgentOnboarding;
 use App\Livewire\Register;
 use App\Livewire\StudentOnboarding;
 use App\Livewire\CreateListing;
+use App\Livewire\ListingDetails;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
@@ -19,7 +20,7 @@ Route::post('/register',[AuthController::class,'registerProcess'])->name('regist
 Route::get('/register',[AuthController::class,'register'])->name('register');
 
 Route::middleware(['auth'])->group(function(){
-Route::get('/listingDetails/{listing}',[RoomateConnect::class,'listingDetails'])->name('listingDetails');
+Route::get('/listingDetails/{listing}',ListingDetails::class)->name('listingDetails');
 Route::get('/studentOnboarding',StudentOnboarding::class)->name('student.onboarding');
 Route::get('/agent_onboarding', AgentOnboarding::class)->name('agent.onboarding');
 Route::get('/studentOnboardingSuccess',[RoomateConnect::class,'studentOnboardingSuccess'])->name('studentOnboardingSuccess');
