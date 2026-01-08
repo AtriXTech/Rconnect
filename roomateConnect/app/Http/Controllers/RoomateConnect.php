@@ -41,8 +41,9 @@ class RoomateConnect extends Controller
         return view('student.roomies',compact('students'));
     }
 
-    public function listingDetails(Listing $listing)
-{
-    return view('agent.listingDetails', compact('listing'));
-}
+//     public function listingDetails(Listing $listing)
+// {
+//     return view('agent.listingDetails', compact('listing'));
+// }
+
 }

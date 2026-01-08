@@ -20,7 +20,7 @@ Route::post('/register',[AuthController::class,'registerProcess'])->name('regist
 Route::get('/register',[AuthController::class,'register'])->name('register');
 
 Route::middleware(['auth'])->group(function(){
-Route::get('/listingDetails/{listing}',ListingDetails::class)->name('listingDetails');
+Route::get('/listingDetails/{listingId}',ListingDetails::class)->name('listingDetails');
 Route::get('/studentOnboarding',StudentOnboarding::class)->name('student.onboarding');
 Route::get('/agent_onboarding', AgentOnboarding::class)->name('agent.onboarding');
 Route::get('/studentOnboardingSuccess',[RoomateConnect::class,'studentOnboardingSuccess'])->name('studentOnboardingSuccess');

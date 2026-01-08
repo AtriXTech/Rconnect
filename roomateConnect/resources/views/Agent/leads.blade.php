@@ -1,50 +1,6 @@
 <x-generalLayout>
   <div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden  bg-background-light dark:bg-background-dark">
-
-    <!-- ================= FIXED HEADER ================= -->
-    <div class="fixed top-0 left-0 right-0 z-50 bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-sm">
-
-      <!-- Top Bar -->
-      <div class="md:mx-40 flex items-center p-4 pb-3 justify-between border-b border-gray-100 dark:border-gray-800 transition-colors">
-        <div class="w-10 flex items-center">
-          <button class="rounded-full p-2 hover:bg-primary/10 transition-colors group">
-            <span
-              class="material-symbols-outlined text-text-main dark:text-white group-hover:text-primary transition-colors"
-              style="font-size: 24px;"
-            >
-              arrow_back
-            </span>
-          </button>
-        </div>
-
-        <h2 class="text-text-main dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">
-          My Leads
-        </h2>
-
-        <div class="flex w-10 items-center justify-end"></div>
-      </div>
-
-      <!-- Pills / Tabs -->
-      <div class="md:mx-40 bg-surface-light dark:bg-surface-dark pt-3 pb-4 px-4 shadow-sm border-b border-gray-100 dark:border-gray-800">
-        <div class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1">
-          <button class="flex-shrink-0 px-4 py-2 bg-primary text-white rounded-full text-xs font-bold shadow-sm shadow-primary/30 flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
-            New Inquiries
-          </button>
-
-          <button class="flex-shrink-0 px-4 py-2 bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-700 text-text-muted dark:text-gray-300 rounded-full text-xs font-bold whitespace-nowrap">
-            Follow-ups
-          </button>
-
-          <button class="flex-shrink-0 px-4 py-2 bg-background-light dark:bg-background-dark border border-gray-200 dark:border-gray-700 text-text-muted dark:text-gray-300 rounded-full text-xs font-bold whitespace-nowrap">
-            Closed Leads
-          </button>
-        </div>
-      </div>
-    </div>
-    <!-- ================= END FIXED HEADER ================= -->
-
-
+    <x-agentNavLayout />
     <!-- ================= MAIN CONTENT ================= -->
     <!-- Padding-top compensates for fixed header height -->
     <div class="flex-1 flex flex-col p-4 pt-[150px] space-y-4 pb-24 md:mx-40">

@@ -18,22 +18,41 @@
 </div>
 <nav class="px-4">
 <div class="flex justify-between gap-2 overflow-x-auto no-scrollbar">
-<a class="flex flex-1 min-w-[70px] flex-col items-center justify-center border-b-[3px] border-b-primary text-primary pb-3 pt-2" href="#">
-<span class="material-symbols-outlined mb-1 text-[22px] filled">dashboard</span>
-<p class="text-xs font-bold leading-normal tracking-[0.015em]">Dashboard</p>
-</a>
-<a class="flex flex-1 min-w-[70px] flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 pb-3 pt-2 transition-colors" href="#">
-<span class="material-symbols-outlined mb-1 text-[22px]">group</span>
-<p class="text-xs font-bold leading-normal tracking-[0.015em]">Leads</p>
-</a>
-<a class="flex flex-1 min-w-[70px] flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 pb-3 pt-2 transition-colors" href="#">
+
+<a href="{{ route('agentDashboard') }}"
+           class="flex flex-1 min-w-[70px] flex-col items-center justify-center pb-3 pt-2
+           {{ request()->routeIs('agentDashboard')
+                ? 'border-b-[3px] border-primary text-primary'
+                : 'border-b-[3px] border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+           }}">
+            <span class="material-symbols-outlined mb-1 text-[22px]">dashboard</span>
+            <p class="text-xs font-bold leading-normal tracking-[0.015em]">Dashboard</p>
+        </a>
+
+        <a href="{{ route('agentLeads') }}"
+           class="flex flex-1 min-w-[70px] flex-col items-center justify-center pb-3 pt-2
+           {{ request()->routeIs('agentLeads')
+                ? 'border-b-[3px] border-primary text-primary'
+                : 'border-b-[3px] border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+           }}">
+            <span class="material-symbols-outlined mb-1 text-[22px]">group</span>
+            <p class="text-xs font-bold leading-normal tracking-[0.015em]">Leads</p>
+        </a>
+
+<a class="flex flex-1 min-w-[70px] flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 pb-3 pt-2 transition-colors" href="{{route('show')}}">
 <span class="material-symbols-outlined mb-1 text-[22px]">chat_bubble</span>
 <p class="text-xs font-bold leading-normal tracking-[0.015em]">Chats</p>
 </a>
-<a class="flex flex-1 min-w-[70px] flex-col items-center justify-center border-b-[3px] border-b-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 pb-3 pt-2 transition-colors" href="{{route('agentProfile')}}">
-<span class="material-symbols-outlined mb-1 text-[22px]">person</span>
-<p class="text-xs font-bold leading-normal tracking-[0.015em]">Profile</p>
-</a>
+{{-- Profile --}}
+        <a href="{{ route('agentProfile') }}"
+           class="flex flex-1 min-w-[70px] flex-col items-center justify-center pb-3 pt-2
+           {{ request()->routeIs('agentProfile')
+                ? 'border-b-[3px] border-primary text-primary'
+                : 'border-b-[3px] border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
+           }}">
+            <span class="material-symbols-outlined mb-1 text-[22px]">person</span>
+            <p class="text-xs font-bold leading-normal tracking-[0.015em]">Profile</p>
+        </a>
 </div>
 </nav>
 </header>

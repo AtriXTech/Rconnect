@@ -1,32 +1,8 @@
 <x-generalLayout>
-<nav class="sticky top-0 z-50 w-full bg-surface-light/95 dark:bg-surface-dark/95 backdrop-blur-sm border-b border-border-light dark:border-border-dark">
-  <div class="relative flex items-center p-4 h-16">
-
-    <!-- Left: Back Button -->
-    <div class="flex items-center">
-      <button class="rounded-full p-2 hover:bg-primary/10 transition-colors group">
-        <span
-          class="material-symbols-outlined text-text-main dark:text-white group-hover:text-primary transition-colors"
-          style="font-size: 24px;"
-        >
-          arrow_back
-        </span>
-      </button>
-    </div>
-
-    <!-- Center: Title -->
-    <h1 class="absolute left-1/2 -translate-x-1/2 text-lg font-bold tracking-tight text-text-main dark:text-white">
-      My Profile
-    </h1>
-
-    <!-- Right: Spacer (optional, keeps balance if you add icons later) -->
-    <div class="ml-auto w-10"></div>
-
-  </div>
-</nav>
+<x-agentNavLayout /> 
 
 @foreach($agency as $agent)
-<main class="md:mx-40 flex flex-col gap-6 p-4">
+<main class="md:mx-40 flex flex-col gap-6 p-4 mt-[100px]">
 <section class="flex flex-col items-center gap-4 py-4">
 <div class="relative group">
 <div

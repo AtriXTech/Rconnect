@@ -2,7 +2,7 @@
     
         <x-StudentNavLayout />
 
-        <main class="pt-[150px] ">
+        <main class="pt-[150px]">
             <div class='px-4 grid grid-col md:grid-cols-2 gap-5 md:mx-40 '>
 
 @foreach ($feedItems as $item)
@@ -166,7 +166,7 @@
     @endforeach
 </div>
 
-<a href="{{route('listingDetails',['listing' => $item->id])}}">
+<a href="{{route('listingDetails',['listingId' => $item->id])}}">
 <button class="mt-1 flex w-full items-center justify-center rounded-lg bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 text-sm transition-colors shadow-sm shadow-primary/30">
                     View Details
                 </button>
