@@ -78,7 +78,7 @@
 </main>
 <footer class="fixed right-0 left-0 bottom-0 z-10 mt-4 flex items-center justify-between gap-4 border-t border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-background-dark">
 <div >
-<span class="text-xl font-bold">${{$listing->hostel_price}} K<span class="text-base font-normal text-gray-600 dark:text-gray-400">/month</span></span>
+<span class="text-xl font-bold">${{$listing->hostel_price}} K<span class="text-base font-normal text-gray-600 dark:text-gray-400">/Year</span></span>
 </div>
 <button class="flex grow max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-5 py-3 text-base font-bold leading-normal tracking-[0.015em] text-[#111818] sm:grow-0">
 <span class="truncate">Book Now</span>

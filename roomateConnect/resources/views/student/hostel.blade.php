@@ -93,9 +93,11 @@
     @endforeach
 </div>
 
+<a href="{{route('listingDetails',['listingId' => $listing->id])}}">
 <button class="mt-1 flex w-full items-center justify-center rounded-lg bg-primary hover:bg-primary-dark text-white font-semibold py-2.5 text-sm transition-colors shadow-sm shadow-primary/30">
                     View Details
                 </button>
+</a>
 </div>
 </div>
 @endforeach

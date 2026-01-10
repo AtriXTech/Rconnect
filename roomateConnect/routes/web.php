@@ -14,7 +14,7 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 
 
-Route::get('/login',[AuthController::class,'login'])->name('login');
+Route::get('/',[AuthController::class,'login'])->name('login');
 Route::post('/login',[AuthController::class,'loginProcess'])->name('login.process');
 Route::post('/register',[AuthController::class,'registerProcess'])->name('register.process');
 Route::get('/register',[AuthController::class,'register'])->name('register');
