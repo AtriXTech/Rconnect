@@ -81,4 +81,26 @@ public function agent_profile()
     {
         return $this->hasOne(Agency::class);
     }
+
+    public function userOne()
+{
+    return $this->hasMany(Conversation::class, 'user_one_id');
+}
+
+// Conversations where user is second participant
+public function userTwo()
+{
+    return $this->hasMany(Conversation::class, 'user_two_id');
+}
+
+// All messages sent by user
+public function messages()
+{
+    return $this->hasMany(Message::class, 'sender_id');
+}
+public function allConversations()
+{
+    return $this->conversationsAsUserOne->merge($this->conversationsAsUserTwo);
+}
+
 }

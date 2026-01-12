@@ -13,6 +13,12 @@ class Conversation extends Model
         'last_message_at',
     ];
 
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
     public function userOne()
     {
         return $this->belongsTo(User::class, 'user_one_id');

@@ -166,7 +166,7 @@
 </button>
 </a>
 
-<form  method="POST" action="{{ route('startChat',auth()->user()->id) }}">
+<form  method="POST" action="{{ route('startChat',$student->user_id) }}">
     @csrf
   <button class="mt-1 w-full flex items-center justify-center gap-2 bg-surface-light dark:bg-surface-dark border-2 border-primary/20 hover:border-primary text-primary-content dark:text-white font-bold py-3 px-4 rounded-xl transition-all">
 <span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>

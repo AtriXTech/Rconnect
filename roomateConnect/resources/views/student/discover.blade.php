@@ -6,7 +6,8 @@
             <div class='px-4 grid grid-col md:grid-cols-2 gap-5 md:mx-40 '>
 
 @foreach ($feedItems as $item)
-@if($item instanceof \App\Models\roommate_profile)
+@if($item instanceof \App\Models\roommate_profile && $item->user_id !== Auth::user()->id)
+{{-- {{dd($item)}} --}}
 <div class="group bg-card-light dark:bg-card-dark rounded-xl shadow-sm dark:shadow-none overflow-hidden border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all duration-300">
 <div class="relative h-52 w-full overflow-hidden">
 <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="Portrait of a young man with glasses looking thoughtful" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAK7CgYLBUoP6BZ4qOT8Et836p3CCHM3sJx1YiDdd2mJiMigCUQI80MmJ-j3XsMmiJFmPevZeKnPtRUyiiXQsaoBMvL3RpS8xAfhhXT2OjR0seb7pcFz2e0GiL281n-KxUOWBW3MSuspeO_dYSdDg15tAVhpCqxtQv7xNWnv9dSIJhW4RUqkGsKrXRYfK4q6Sy5oYY1Glv2IDtjvNUwCGD6nkZZqmvwTJsIEEfnVjbsbDtDO9lAW8b-lMMlKTtkKI0HrQ0KGQzfw6li');"></div>
@@ -41,6 +42,10 @@
 <p class="text-xs text-slate-500 dark:text-slate-400 mb-0.5">Budget</p>
 <p class="text-sm font-bold text-primary">min: ${{$item->min_budget}} • max: ${{$item->max_budget}}<span class="text-xs font-normal text-slate-400">/yr</span></p>
 </div>
+
+{{-- @if(Auth::user()->name)
+<h1 class='text-red-600'>im the auth user </h1>
+@endif --}}
 </div>
   {{-- {{dd($item->my_vibes)}} --}}
 
@@ -117,7 +122,7 @@
 </div>
 
 
-<form  method="POST" action="{{ route('startChat',auth()->user()->id) }}">
+<form  method="POST" action="{{ route('startChat',$item->user_id) }}">
     @csrf
 <button class="mt-2 w-full h-11 flex items-center justify-center gap-2 bg-primary hover:bg-primary-hover active:scale-[0.98] text-slate-900 font-bold rounded-lg text-sm transition-all shadow-sm shadow-primary/20">
                 Connect

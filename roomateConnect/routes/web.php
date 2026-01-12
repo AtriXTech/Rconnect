@@ -14,11 +14,11 @@ use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
 
 
-Route::get('/',[AuthController::class,'login'])->name('login');
+Route::get('/login',[AuthController::class,'login'])->name('login');
 Route::post('/login',[AuthController::class,'loginProcess'])->name('login.process');
 Route::post('/register',[AuthController::class,'registerProcess'])->name('register.process');
 Route::get('/register',[AuthController::class,'register'])->name('register');
-
+Route::post('/chat/{conversation}/message', [ChatController::class, 'sendMessage'])->name('message.send');
 Route::middleware(['auth'])->group(function(){
 Route::get('/listingDetails/{listingId}',ListingDetails::class)->name('listingDetails');
 Route::get('/studentOnboarding',StudentOnboarding::class)->name('student.onboarding');
@@ -31,7 +31,7 @@ Route::get('/discover',[RoomateConnect::class,'discover'])->name('discover');
 Route::get('/hostels',[RoomateConnect::class,'hostels'])->name('hostels');
 Route::get('/roomies',[RoomateConnect::class,'roomies'])->name('roomies');
 Route::get('/list_chat',[ChatController::class,'list'])->name('list');
-Route::get('/show_chat',[ChatController::class,'show'])->name('show');
+Route::get('/show_chat/{conversation}',[ChatController::class,'show'])->name('show');
 Route::post('start_chat/{user}',[ChatController::class,'startChat'])->name('startChat');
 Route::get('/agentDashboard',[RoomateConnect::class,'agentDashboard'])->name('agentDashboard');
 Route::get('/agentLeads',[RoomateConnect::class,'agentLeads'])->name('agentLeads');

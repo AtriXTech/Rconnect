@@ -28,7 +28,7 @@ class RoomateConnect extends Controller
 
     public function discover(){
         $hostels = Listing::inRandomOrder()->take(5)->get();
-        $roommates = roommate_profile::inRandomOrder()->take(2)->get();
+        $roommates = roommate_profile::inRandomOrder()->take(5)->get();
         $feedItems = $hostels->merge($roommates)->shuffle();
         return view('student.discover',compact('feedItems'));
     }
